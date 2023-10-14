@@ -9,6 +9,7 @@ const App = () => {
 
   return (
     <div>
+      <div className="titleGeral">Apresentação Pessoal</div>
       <div className="tab">
         <button onClick={() => setActiveTab('Sobre Você')}>Sobre Você</button>
         <button onClick={() => setActiveTab('Formação')}>Formação</button>
