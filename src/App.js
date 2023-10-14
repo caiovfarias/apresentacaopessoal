@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import PersonalInfo from './Personal';
+import Education from './Education';
+import Experience from './Experience';
+import Hobbies from './Hobbies';
 
-function App() {
+const App = () => {
+  const [activeTab, setActiveTab] = useState('Sobre Você');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="tab">
+        <button onClick={() => setActiveTab('Sobre Você')}>Sobre Você</button>
+        <button onClick={() => setActiveTab('Formação')}>Formação</button>
+        <button onClick={() => setActiveTab('Experiência')}>Experiência</button>
+        <button onClick={() => setActiveTab('Hobbies')}>Hobbies</button>
+      </div>
+      {activeTab === 'Sobre Você' && <PersonalInfo />}
+      {activeTab === 'Formação' && <Education />}
+      {activeTab === 'Experiência' && <Experience />}
+      {activeTab === 'Hobbies' && <Hobbies />}
     </div>
   );
-}
+};
 
 export default App;
