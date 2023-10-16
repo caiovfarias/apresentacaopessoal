@@ -1,5 +1,6 @@
 // Experience.js
 import React, { useState } from 'react';
+import { Button, AddOrRemoveButton } from './styles/common-components/Button/Button';
 
 const Experience = () => {
   const [experiences, setExperiences] = useState([
@@ -81,12 +82,12 @@ const Experience = () => {
         <label>Upload Projeto Notável: </label>
         <input type="file" />
       </div>
-          <button onClick={() => handleRemoveExperience(index)}>Remover</button>
+          <AddOrRemoveButton variant="remove" onClick={() => handleRemoveExperience(index)}>Remover</AddOrRemoveButton>
         </div>
       ))}
-      <button onClick={handleAddExperience}>Adicionar Experiência</button>
+      <AddOrRemoveButton onClick={handleAddExperience}>Adicionar Experiência</AddOrRemoveButton>
       <div>
-        <button onClick={handleSave}>Salvar</button>
+        <Button onClick={handleSave}>Salvar</Button>
       </div>
     </div>
     

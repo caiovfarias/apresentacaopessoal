@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import InputMask from 'react-input-mask';
+import { Button } from './styles/common-components/Button/Button';
+import { MainContainer } from './styles/common-components/MainContainer/MainContainer';
 
 const PersonalInfo = () => {
   const [agreed, setAgreed] = useState(false);
@@ -43,47 +45,41 @@ const PersonalInfo = () => {
   return (
     <div>
       <h2>Sobre Você</h2>
+      <MainContainer>
       <div>
         <label>Upload de Foto:</label>
-        <input type="file" />
+        <input type="file" placeholder='Upload de Foto'/>
       </div>
       <div>
-        <label>Nome:</label>
-        <input type="text" />
+        <input type="text" placeholder='Nome'/>
       </div>
       <div>
-        <label>CEP:</label>
         <input
           type="text"
           value={cep}
           onChange={handleCepChange}
-          placeholder="_____-___"
+          placeholder="CEP:"
           maxLength="9"
         />
         <button onClick={fetchAddress}>Consultar CEP</button>
       </div>
       <div>
-        <label>Endereço:</label>
-        <input type="text" value={endereco} readOnly />
+        <input type="text" value={endereco} placeholder='Endereço' readOnly />
       </div>
       <div>
-        <label>Bairro:</label>
-        <input type="text" value={bairro} readOnly />
+        <input type="text" value={bairro} placeholder='Bairro' readOnly />
       </div>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <div>
-        <label>Telefone:</label>
-        <InputMask mask="(99) 99999-9999" maskChar="_">
-          {(inputProps) => <input type="text" {...inputProps} />}
+             <InputMask mask="(99) 99999-9999" maskChar="_">
+          {(inputProps) => <input type="text" placeholder='Celular' {...inputProps} />}
         </InputMask>
       </div>
       <div>
-        <label>Email:</label>
-        <input type="text" />
+        <input type="email" placeholder="E-mail" />
       </div>
       <div>
-        <label>Mini-bio:</label>
-        <textarea />
+        <textarea placeholder='Mini Bio - Escreva um pouco a respeito de você.' />
       </div>
       <div>
         <h3>Vincular Redes Sociais:</h3>
@@ -105,8 +101,10 @@ const PersonalInfo = () => {
         <input type="checkbox" checked={agreed} onChange={handleAgreementChange} />
         Ao informar meus dados, eu concordo com os Termos de Uso
       </label>
+      </MainContainer>
       <div>
-        <button onClick={handleSave}>Salvar</button>
+        
+        <Button onClick={handleSave}>Salvar</Button>
       </div>
     </div>
   );

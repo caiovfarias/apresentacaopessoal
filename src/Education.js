@@ -1,5 +1,6 @@
 // Education.js
 import React, { useState } from 'react';
+import { Button, AddOrRemoveButton } from './styles/common-components/Button/Button';
 
 const Education = () => {
   const [educations, setEducations] = useState([{ institution: '', course: '', startDate: '', endDate: '' }]);
@@ -72,12 +73,12 @@ const Education = () => {
         <label>Upload Certificado ou Qualificação: </label>
         <input type="file" />
       </div>
-          <button onClick={() => handleRemoveEducation(index)}>Remover</button>
+          <AddOrRemoveButton variant="remove" onClick={() => handleRemoveEducation(index)}>Remover</AddOrRemoveButton>
         </div>
       ))}
-      <button onClick={handleAddEducation}>Adicionar Formação</button>
+      <AddOrRemoveButton onClick={handleAddEducation}>Adicionar Formação</AddOrRemoveButton>
       <div>
-        <button onClick={handleSave}>Salvar</button>
+        <Button onClick={handleSave}>Salvar</Button>
       </div>
     </div>
   );

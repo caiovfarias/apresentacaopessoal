@@ -1,5 +1,6 @@
 // Hobbies.js
 import React, { useState } from 'react';
+import { Button, AddOrRemoveButton } from './styles/common-components/Button/Button';
 
 const Hobbies = () => {
   const [hobbies, setHobbies] = useState([{ hobby: '', description: '' }]);
@@ -52,12 +53,12 @@ const Hobbies = () => {
         <label>Upload de Foto: </label>
         <input type="file" />
       </div>
-          <button onClick={() => handleRemoveHobby(index)}>Remover</button>
+          <AddOrRemoveButton variant="remove" onClick={() => handleRemoveHobby(index)}>Remover</AddOrRemoveButton>
         </div>
       ))}
-      <button onClick={handleAddHobby}>Adicionar Hobbie</button>
+      <AddOrRemoveButton onClick={handleAddHobby}>Adicionar Hobbie</AddOrRemoveButton>
       <div>
-        <button onClick={handleSave}>Salvar</button>
+        <Button onClick={handleSave}>Salvar</Button>
       </div>
     </div>
   );
