@@ -5,7 +5,7 @@ export const Colors = {
     BLUE: '#287DFF',
     PURPLE: '#5405B8',
     RED: '#DC3545',
-    GREEN: "#28A745",
+    GREEN: "#4CAF50",
     GRAY: '#F2F3F3',
   };
   

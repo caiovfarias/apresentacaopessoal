@@ -2,10 +2,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import InputMask from 'react-input-mask';
-import { Button } from './styles/common-components/Button/Button';
+import { Button } from './styles/common-components/Buttons/Buttons';
 import { MainContainer } from './styles/common-components/MainContainer/MainContainer';
-import { Input } from './styles/common-components/Input/Input';
+import { Input, FileInput } from './styles/common-components/Inputs/Inputs';
 import {TextArea} from './styles/common-components/TextArea/TextArea'
+import {Footer} from './styles/common-components/Footer/Footer'
 
 const PersonalInfo = () => {
   const [agreed, setAgreed] = useState(false);
@@ -49,12 +50,18 @@ const PersonalInfo = () => {
       <h2>Sobre Você</h2>
       <MainContainer>
       
-      <div>
-      <label>Upload de Foto</label>
+
+
+      <FileInput>
+      <label className="file-input-label">
+          <span>Upload de foto</span>
+          <input type="file" className="attachment-input" />
+        </label>
+      {/* <label>Upload de Foto</label>
       </div>
       <div>
-        <Input type="file" />
-      </div>
+        <Input type="file" /> */}
+      </FileInput>
       <div>
         <Input type="text" placeholder='Nome'/>
       </div>
@@ -63,7 +70,7 @@ const PersonalInfo = () => {
           type="text"
           value={cep}
           onChange={handleCepChange}
-          placeholder="CEP:"
+          placeholder="CEP"
           maxLength="9"
         />
       </div>
@@ -78,7 +85,7 @@ const PersonalInfo = () => {
       </div>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <div>
-             <InputMask mask="(99) 99999-9999" maskChar="_">
+        <InputMask mask="(99) 99999-9999" maskChar="_">
           {(inputProps) => <Input type="text" placeholder='Celular' {...inputProps} />}
         </InputMask>
       </div>
@@ -94,9 +101,9 @@ const PersonalInfo = () => {
         Ao informar meus dados, eu concordo com os Termos de Uso
       </label>
       </MainContainer>
-      <div>        
+      <Footer>        
         <Button onClick={handleSave}>Salvar</Button>
-      </div>
+      </Footer>
     </div>
   );
 };
