@@ -1,6 +1,9 @@
 // Hobbies.js
 import React, { useState } from 'react';
 import { Button, AddOrRemoveButton } from './styles/common-components/Button/Button';
+import { MainContainer } from './styles/common-components/MainContainer/MainContainer';
+import { Input } from './styles/common-components/Input/Input';
+import {TextArea} from './styles/common-components/TextArea/TextArea'
 
 const Hobbies = () => {
   const [hobbies, setHobbies] = useState([{ hobby: '', description: '' }]);

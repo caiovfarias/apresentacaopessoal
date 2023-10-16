@@ -10,7 +10,17 @@ border-radius: 30px;
 border-style: none;
 color: ${Colors.WHITE};
 font-weight: ${FontWeights.BOLD};
-background-color: ${(props) => props.variant === 'secondary' ? Colors.MEDIUMGRAY : Colors.PINK}  ;
+background-color: ${(props) => props.variant === 'secondary' ? Colors.MEDIUMGRAY : Colors.PINK};
+opacity: 0.8;
+transition: 0.3s;
+
+&:hover,
+  &:focus {
+    background-color: ${Colors.BLACK};
+    opacity: 0.5; 
+   }
+    
+
 
 `
 

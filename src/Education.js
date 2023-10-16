@@ -1,6 +1,11 @@
 // Education.js
 import React, { useState } from 'react';
+import { MainContainer, MainContainer2 } from './styles/common-components/MainContainer/MainContainer';
+import { Input } from './styles/common-components/Input/Input';
+import {TextArea} from './styles/common-components/TextArea/TextArea'
+
 import { Button, AddOrRemoveButton } from './styles/common-components/Button/Button';
+import { Footer } from './styles/common-components/Footer/Footer';
 
 const Education = () => {
   const [educations, setEducations] = useState([{ institution: '', course: '', startDate: '', endDate: '' }]);
@@ -30,11 +35,12 @@ const Education = () => {
   return (
     <div>
       <h2>Formação</h2>
+      <MainContainer>
       {educations.map((education, index) => (
-        <div key={index}>
+        <MainContainer2 key={index}>
           <div>
-            <label>Nome da Instituição:</label>
-            <input
+            <Input
+              placeholder='Nome da Intituição'
               type="text"
               name="institution"
               value={education.institution}
@@ -42,8 +48,8 @@ const Education = () => {
             />
           </div>
           <div>
-            <label>Nome do Curso:</label>
-            <input
+            <Input
+              placeholder='Nome do Curso'
               type="text"
               name="course"
               value={education.course}
@@ -51,8 +57,8 @@ const Education = () => {
             />
           </div>
           <div>
-            <label>Data de Início:</label>
-            <input
+            <Input
+              placeholder='Data de início'
               type="date"
               name="startDate"
               value={education.startDate}
@@ -60,8 +66,8 @@ const Education = () => {
             />
           </div>
           <div>
-            <label>Data de Conclusão:</label>
-            <input
+            <Input
+              placeholder='Data de Conclusão'
               type="date"
               name="endDate"
               value={education.endDate}
@@ -71,15 +77,18 @@ const Education = () => {
 
           <div>
         <label>Upload Certificado ou Qualificação: </label>
-        <input type="file" />
+        <Input type="file" />
       </div>
           <AddOrRemoveButton variant="remove" onClick={() => handleRemoveEducation(index)}>Remover</AddOrRemoveButton>
-        </div>
+        </MainContainer2>
       ))}
-      <AddOrRemoveButton onClick={handleAddEducation}>Adicionar Formação</AddOrRemoveButton>
-      <div>
+      </MainContainer>
+      
+      <Footer>
+        <AddOrRemoveButton onClick={handleAddEducation}>Adicionar Formação</AddOrRemoveButton>
         <Button onClick={handleSave}>Salvar</Button>
-      </div>
+      </Footer>
+    
     </div>
   );
 };
