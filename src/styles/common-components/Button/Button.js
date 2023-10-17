@@ -11,12 +11,11 @@ border-style: none;
 color: ${Colors.WHITE};
 font-weight: ${FontWeights.BOLD};
 background-color: ${(props) => props.variant === 'secondary' ? Colors.MEDIUMGRAY : Colors.PINK};
-//opacity: 0.8;
 transition: 0.3s;
 
 &:hover,
   &:focus {
-    opacity: 0.5; 
+    opacity: 0.2; 
    }
 
 `

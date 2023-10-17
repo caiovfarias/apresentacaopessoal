@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Colors, FontWeights } from "../../shared/DesignTokens"
+import { Colors, FontSizes, FontWeights } from "../../shared/DesignTokens"
 
 export const Input = styled.input`
 height: 25px;
@@ -48,5 +48,16 @@ export const FileInput = styled.div`
 .file-input-label:hover {
   background-color: #45a049;
 }
+
+`
+
+export const CheckboxInputContainer = styled.div`
+height: auto;
+width: 300px;
+border-radius: 10px;
+border-style: none;
+color: ${Colors.BLACK};
+font-weight: ${FontWeights.BOLD};
+font-size: ${FontSizes.ONE_QUARTER};
 
 `

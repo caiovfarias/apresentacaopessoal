@@ -22,7 +22,6 @@ const App = () => {
             <a onClick={() => setActiveTab('Hobbies')}>Hobbies</a>
           </Links>
         </Header>
-
         {activeTab === 'Sobre Você' && <PersonalInfo />}
         {activeTab === 'Formação' && <Education />}
         {activeTab === 'Experiência' && <Experience />}

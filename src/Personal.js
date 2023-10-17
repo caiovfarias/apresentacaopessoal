@@ -2,11 +2,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import InputMask from 'react-input-mask';
-import { Button } from './styles/common-components/Buttons/Buttons';
+import { Button } from './styles/common-components/Button/Button';
 import { MainContainer } from './styles/common-components/MainContainer/MainContainer';
-import { Input, FileInput } from './styles/common-components/Inputs/Inputs';
-import {TextArea} from './styles/common-components/TextArea/TextArea'
-import {Footer} from './styles/common-components/Footer/Footer'
+import { Input, FileInput, CheckboxInputContainer } from './styles/common-components/Input/Input';
+import { TextArea } from './styles/common-components/TextArea/TextArea'
+import { Footer } from './styles/common-components/Footer/Footer'
 
 const PersonalInfo = () => {
   const [agreed, setAgreed] = useState(false);
@@ -49,59 +49,54 @@ const PersonalInfo = () => {
     <div>
       <h2>Sobre Você</h2>
       <MainContainer>
-      
+        <FileInput>
+          <label className="file-input-label">
+            <span>Upload de foto</span>
+            <input type="file" className="attachment-input" />
+          </label>
+        </FileInput>
+        <div>
+          <Input type="text" placeholder='Nome' />
+        </div>
+        <div>
+          <Input
+            type="text"
+            value={cep}
+            onChange={handleCepChange}
+            placeholder="CEP"
+            maxLength="9"
+          />
+        </div>
+        <div>
+          <Button onClick={fetchAddress}>Consultar CEP</Button>
+        </div>
+        <div>
+          <Input type="text" value={endereco} placeholder='Endereço' readOnly />
+        </div>
+        <div>
+          <Input type="text" value={bairro} placeholder='Bairro' readOnly />
+        </div>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <div>
+          <InputMask mask="(99) 99999-9999" maskChar="_">
+            {(inputProps) => <Input type="text" placeholder='Celular' {...inputProps} />}
+          </InputMask>
+        </div>
+        <div>
+          <Input type="email" placeholder="E-mail" />
+        </div>
+        <div>
+          <TextArea placeholder='Mini Bio - Escreva um pouco a respeito de você.' />
+        </div>
+        <br />
 
+        <CheckboxInputContainer><label>
+          <input type="checkbox" checked={agreed} onChange={handleAgreementChange} />
+          Ao informar meus dados, eu concordo com os Termos de Uso
+        </label></CheckboxInputContainer>
 
-      <FileInput>
-      <label className="file-input-label">
-          <span>Upload de foto</span>
-          <input type="file" className="attachment-input" />
-        </label>
-      {/* <label>Upload de Foto</label>
-      </div>
-      <div>
-        <Input type="file" /> */}
-      </FileInput>
-      <div>
-        <Input type="text" placeholder='Nome'/>
-      </div>
-      <div>
-        <Input
-          type="text"
-          value={cep}
-          onChange={handleCepChange}
-          placeholder="CEP"
-          maxLength="9"
-        />
-      </div>
-      <div>
-      <Button onClick={fetchAddress}>Consultar CEP</Button>
-      </div>
-      <div>
-        <Input type="text" value={endereco} placeholder='Endereço' readOnly />
-      </div>
-      <div>
-        <Input type="text" value={bairro} placeholder='Bairro' readOnly />
-      </div>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <div>
-        <InputMask mask="(99) 99999-9999" maskChar="_">
-          {(inputProps) => <Input type="text" placeholder='Celular' {...inputProps} />}
-        </InputMask>
-      </div>
-      <div>
-        <Input type="email" placeholder="E-mail" />
-      </div>
-      <div>
-        <TextArea placeholder='Mini Bio - Escreva um pouco a respeito de você.' />
-      </div>
-      <br />
-      <label>
-        <input type="checkbox" checked={agreed} onChange={handleAgreementChange} />
-        Ao informar meus dados, eu concordo com os Termos de Uso
-      </label>
       </MainContainer>
-      <Footer>        
+      <Footer>
         <Button onClick={handleSave}>Salvar</Button>
       </Footer>
     </div>
