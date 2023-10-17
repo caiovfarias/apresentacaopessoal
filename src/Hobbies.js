@@ -2,8 +2,10 @@
 import React, { useState } from 'react';
 import { Button, AddOrRemoveButton } from './styles/common-components/Button/Button';
 import { MainContainer } from './styles/common-components/MainContainer/MainContainer';
-import { Input } from './styles/common-components/Input/Input';
-import {TextArea} from './styles/common-components/TextArea/TextArea'
+import { Input, FileInput } from './styles/common-components/Input/Input';
+import { TextArea } from './styles/common-components/TextArea/TextArea'
+import { InfoContainer } from './styles/common-components/InfoContainer/InfoContainer';
+import { Footer } from './styles/common-components/Footer/Footer';
 
 const Hobbies = () => {
   const [hobbies, setHobbies] = useState([{ hobby: '', description: '' }]);
@@ -33,36 +35,43 @@ const Hobbies = () => {
   return (
     <div>
       <h2>Hobbies</h2>
-      {hobbies.map((hobby, index) => (
-        <div key={index}>
-          <div>
-            <label>Hobby/Interesse:</label>
-            <input
-              type="text"
-              name="hobby"
-              value={hobby.hobby}
-              onChange={(event) => handleHobbyChange(index, event)}
-            />
-          </div>
-          <div>
-            <label>Descrição:</label>
-            <textarea
-              name="description"
-              value={hobby.description}
-              onChange={(event) => handleHobbyChange(index, event)}
-            />
-          </div>
-          <div>
-        <label>Upload de Foto: </label>
-        <input type="file" />
-      </div>
-          <AddOrRemoveButton variant="remove" onClick={() => handleRemoveHobby(index)}>Remover</AddOrRemoveButton>
-        </div>
-      ))}
-      <AddOrRemoveButton onClick={handleAddHobby}>Adicionar Hobbie</AddOrRemoveButton>
-      <div>
+      <MainContainer>
+        {hobbies.map((hobby, index) => (
+          <InfoContainer key={index}>
+            <div>
+              <Input
+                placeholder='Hobby/Interesse'
+                type="text"
+                name="hobby"
+                value={hobby.hobby}
+                onChange={(event) => handleHobbyChange(index, event)}
+              />
+            </div>
+            <div>
+              <TextArea
+                placeholder='Descrição'
+                name="description"
+                value={hobby.description}
+                onChange={(event) => handleHobbyChange(index, event)}
+              />
+            </div>
+            <div>
+              <FileInput>
+                <label className="file-input-label">
+                  <span>Upload de Foto</span>
+                  <input type="file" className="attachment-input" />
+                </label>
+              </FileInput>
+            </div>
+            <AddOrRemoveButton variant="remove" onClick={() => handleRemoveHobby(index)}>Remover</AddOrRemoveButton>
+          </InfoContainer>
+        ))}
+      </MainContainer>
+      <Footer>
+        <AddOrRemoveButton onClick={handleAddHobby}>Adicionar Hobbie</AddOrRemoveButton>
         <Button onClick={handleSave}>Salvar</Button>
-      </div>
+
+      </Footer>
     </div>
   );
 };

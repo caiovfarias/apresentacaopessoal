@@ -57,8 +57,11 @@ const Education = () => {
             </div>
             <div>
               <Input
-                placeholder='Data de início'
-                type="date"
+                id='startDate'
+                type="text"
+                placeholder="Data de Início (MM/DD/YYYY)"
+                onFocus={() => document.getElementById("startDate").setAttribute("type", "date")}
+                onBlur={() => document.getElementById("startDate").setAttribute("type", "text")}
                 name="startDate"
                 value={education.startDate}
                 onChange={(event) => handleEducationChange(index, event)}
@@ -66,8 +69,11 @@ const Education = () => {
             </div>
             <div>
               <Input
-                placeholder='Data de Conclusão'
-                type="date"
+                id='endDate'
+                type="text"
+                placeholder="Data de Conclusão (MM/DD/YYYY)"
+                onFocus={() => document.getElementById("endDate").setAttribute("type", "date")}
+                onBlur={() => document.getElementById("endDate").setAttribute("type", "text")}
                 name="endDate"
                 value={education.endDate}
                 onChange={(event) => handleEducationChange(index, event)}
